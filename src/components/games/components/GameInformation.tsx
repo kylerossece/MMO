@@ -1,0 +1,37 @@
+import type { gameType } from "../../../types/gameTypes";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {dateFormatter } from "../../../helpers/dateFormatter";
+import { FaWindows } from "react-icons/fa6";
+import { GoBrowser } from "react-icons/go";
+import Tooltip from '@mui/material/Tooltip';
+
+type GameInformationProps = {
+    game: gameType;
+  };
+
+const GameInformation = ({ game }: GameInformationProps) => {
+
+    
+    return (
+        <div className="flex gap-4 items-center hover:scale-105  bg-gray-800 hover:rounded-sm shadow-2xl mt-0.5 ">
+              <LazyLoadImage
+                className="w-auto rounded-md h-20 ml-1 cursor-pointer"
+                alt={game.title}
+                src={game.thumbnail || ''} 
+
+             />
+             <div className="my-2 tracking-tighter flex flex-col gap-1 text-xs">
+      
+                <h4 className="hover:underline cursor-pointer text-amber-50 text-sm ">{game.title}</h4>
+                <p className=" bg-gray-700 inline-block px-1.5 py-0.5 rounded-md  text-white max-w-fit">{game.genre?.trim()}</p>
+                <p className=" tracking-wide uppercase text-gray-400 ml-0.5 flex items-center gap-1">
+                <Tooltip title={game.platform === "PC (Windows)" ? 'PC (Windows)' : 'Browser'}>
+                  <span>{game.platform === "PC (Windows)" ? <FaWindows/> : <GoBrowser/>}</span>
+                  </Tooltip>
+                  {dateFormatter(game.release_date)}  </p>
+             </div>
+        </div>
+    )
+}
+
+export default GameInformation;
