@@ -7,7 +7,7 @@ import FilterField from "./components/FilterField";
 
 const Games = () => {
     return (
-        <section className="h-full bg-gray-900 relative">
+        <section className="h-full w-full min-h-screen bg-gray-900 relative overflow-hidden">
           <CssBaseline />
           <Container>
           <Grid container spacing={4}>
