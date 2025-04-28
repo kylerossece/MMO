@@ -30,8 +30,9 @@ const GameInformation = ({ game }: GameInformationProps) => {
                 <h4 className="hover:underline cursor-pointer text-amber-50 text-sm " onClick={() => {handleGameClick(game.id)}}>{game.title}</h4>
                 <p className=" bg-gray-700 inline-block px-1.5 py-0.5 rounded-md  text-white max-w-fit">{game.genre?.trim()}</p>
                 <p className=" tracking-wide uppercase text-gray-400 ml-0.5 flex items-center gap-1">
-                <Tooltip title={game.platform === "PC (Windows)" ? 'PC (Windows)' : 'Browser'}>
-                  <span>{game.platform === "PC (Windows )" ? <FaWindows/> : <GoBrowser/>}</span>
+                <Tooltip title={game.platform == "PC (Windows)" ? 'PC (Windows)' : 'Browser'}>
+                  <span>{game.platform === "PC (Windows)" ? <FaWindows/> : 
+                          game.platform === "Web Browser" ? <GoBrowser/> : <div className="flex gap-1"><FaWindows /> <GoBrowser/></div> }</span>
                   </Tooltip>
                   {dateFormatter(game.release_date)}  </p>
              </div>
