@@ -10,12 +10,12 @@ const Games = () => {
         <section className="h-full w-full min-h-screen bg-gray-900 relative overflow-hidden">
           <CssBaseline />
           <Container>
-          <Grid container spacing={4}>
+          <Grid  container spacing={4}>
         
-            <Grid size={{ xs: 12, md: 8 }}>
+            <Grid size={{ xs: 12, md: 8 }} order={{ xs: 2, md: 1 }}>
             <GameStack />
             </Grid>
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 4 }} order={{ xs: 1, md: 2 }}>
             <FilterField />
             </Grid>
             </Grid>

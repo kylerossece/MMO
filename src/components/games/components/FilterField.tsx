@@ -107,7 +107,7 @@ const FilterField = () => {
 
     
     return (
-      <>
+      <div >
        <Accordion defaultExpanded className="bg-gray-800 border border-gray-700 rounded-md">
       <AccordionSummary
           sx={{
@@ -134,7 +134,7 @@ const FilterField = () => {
           backgroundColor: '#101828',
         }
       }}>
-        <FormControl className="text-white text-xs font-extralight">
+        <FormControl className="text-gray-200 text-xs font-extralight">
           {genreRadio}
         </FormControl>
       </AccordionDetails>
@@ -153,14 +153,14 @@ const FilterField = () => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails className="bg-gray-900 px-4 py-2 ">
-      <FormControl className='text-white'>
+      <FormControl className='text-gray-200'>
         {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
          {platformRadio}
 
       </FormControl>
       </AccordionDetails>
       </Accordion>
-      </>
+      </div>
     )
 }
 
