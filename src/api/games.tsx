@@ -24,6 +24,7 @@ export const getGames = async (gameId : number | null) => {
 
     return data;
   } catch (error) {
+    alert(error)
     console.error(error);
   }
 };
