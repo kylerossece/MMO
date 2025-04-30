@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getGames = async (gameId : number | null) => {
+export const getGames = async (gameId : number | null, isNews: boolean) => {
   try {
     const baseUrl = 'https://mmo-games.p.rapidapi.com';
     
@@ -10,7 +10,7 @@ export const getGames = async (gameId : number | null) => {
       params.id = gameId;
     }
 
-    const url = gameId ? `${baseUrl}/game` : `${baseUrl}/games`;
+    const url = gameId ? `${baseUrl}/game` : isNews ? `${baseUrl}/latestnews` : `${baseUrl}/games`;
 
     gameId ? params.id : ''
 

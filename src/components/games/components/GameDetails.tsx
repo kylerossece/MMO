@@ -16,7 +16,7 @@ const GameDetails = () => {
     const [image, setImage] = useState<string | null>(null);
 
     useEffect(() => {
-        getGames(Number(gameId)).then((data) => {
+        getGames(Number(gameId), false).then((data) => {
                 setGame(data)
         })
     }, [])
@@ -24,6 +24,11 @@ const GameDetails = () => {
     const handleImage = (image: string) => {
         setImage(image)
     }
+
+    const redirectToProduct = (url : string) => {
+        window.open(url, "_blank")
+    }
+
     useEffect(() => {
         console.log("game",game)
     })
@@ -50,6 +55,7 @@ const GameDetails = () => {
                             { game.screenshots.map((screenshot) => {
                                 return(
                                     <LazyLoadImage
+                                    key={screenshot.id}
                                     className="w-full h-28 object-cover overflow-y-auto cursor-pointer"
                                     alt={game.title}
                                     src={screenshot.image} 
@@ -72,20 +78,26 @@ const GameDetails = () => {
                     <p className="my-4 text-sm">{game.short_description}</p>
                     <div className="flex items-center">
                         <div className="mr-12 uppercase text-gray-500 text-xs font-medium tracking-wide ">
-                            <p>Genre:</p>
-                            <p>Release Date:</p>
-                            <p>Platform:</p>
-                            <p>Publisher:</p>
+                            <p className="mb-2">Genre:</p>
+                            <p className="mb-2">Release Date:</p>
+                            <p className="mb-2">Platform:</p>
+                            <p className="mb-2">Publisher:</p>
                             <p>Developer:</p>
                         </div>
                         <div className="text-xs tracking-wide">
-                            <p>{game.genre}</p>
-                            <p> {dateFormatter(game.release_date)}</p>
-                            <p>{game.platform}</p>
-                            <p>{game.publisher}</p>
+                            <p className="mb-2">{game.genre}</p>
+                            <p className="mb-2"> {dateFormatter(game.release_date)}</p>
+                            <p className="mb-2">{game.platform}</p>
+                            <p className="mb-2">{game.publisher}</p>
                             <p>{game.developer}</p>
                         </div>
+                       
                     </div>
+                    <div className="mt-10">
+                            <button type="button" className="cursor-pointer justify-end bg-gray-700 hover:bg-gray-800 py-2 px-3 rounded-md  text-gray-200" 
+                            onClick={() => redirectToProduct(game.game_url)}>
+                                Visit Product Page</button>
+                        </div>
                     </Grid>
                     </Grid>
                 </section>
@@ -99,18 +111,18 @@ const GameDetails = () => {
                 <h1 className="text-xl tracking-wider mt-8 mb-4">System Requirements</h1>
                        <div className="flex grow-1 items-center w-full">
                         <div className="text-gray-500 font-medium tracking-wide mr-8">
-                            <p>OS:</p>
-                            <p>Processor:</p>
-                            <p>Memory:</p>
-                            <p>Graphics:</p>
-                            <p>Storage:</p>
+                            <p className="mb-2">OS:</p>
+                            <p className="mb-2">Processor:</p>
+                            <p className="mb-2">Memory:</p>
+                            <p className="mb-2">Graphics:</p>
+                            <p className="mb-2">Storage:</p>
                         </div>
                         <div className="tracking-wide">
-                            <p>{game.minimum_system_requirements?.os}</p>
-                            <p> {game.minimum_system_requirements?.processor}</p>
-                            <p>{game.minimum_system_requirements?.memory}</p>
-                            <p>{game.minimum_system_requirements?.graphics}</p>
-                            <p>{game.minimum_system_requirements?.storage}</p>
+                            <p className="mb-2">{game.minimum_system_requirements?.os}</p>
+                            <p className="mb-2"> {game.minimum_system_requirements?.processor}</p>
+                            <p className="mb-2">{game.minimum_system_requirements?.memory}</p>
+                            <p className="mb-2">{game.minimum_system_requirements?.graphics}</p>
+                            <p className="mb-2">{game.minimum_system_requirements?.storage}</p>
                         </div>
                     </div>
                     </div>

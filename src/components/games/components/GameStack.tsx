@@ -4,7 +4,7 @@ import GameInformation from "./GameInformation";
 import type { gameType } from "../../../types/gameTypes";
 import Stack from "@mui/material/Stack";
 
-const listedGames = 50;
+const listedGames = 15;
 
 const GamesList = () => {
   const { gameList, filteredList } = useGameContext();
@@ -25,7 +25,7 @@ const GamesList = () => {
       },
       {
         root: null,
-        rootMargin: "0px",
+        rootMargin: "1px",
         threshold: 1.0,
       }
     );

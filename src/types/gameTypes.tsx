@@ -42,3 +42,13 @@ interface screenshots{
     id:number
     image:string
 }
+
+export interface News{
+    id:number
+    title: string
+    short_description: string
+    thumbnail?: string
+    main_image?:string
+    article_content?: string
+    article_url?: string
+}

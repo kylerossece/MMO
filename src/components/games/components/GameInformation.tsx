@@ -33,7 +33,7 @@ const GameInformation = ({ game }: GameInformationProps) => {
                 <Tooltip title={game.platform == "PC (Windows)" ? 'PC (Windows)' : 'Browser'}>
                   <span>{game.platform === "PC (Windows)" ? <FaWindows/> : 
                           game.platform === "Web Browser" ? <GoBrowser/> : 
-                          <div className="flex gap-1"><FaWindows /> <GoBrowser/></div> }</span>
+                          <span className="flex gap-1"><FaWindows /> <GoBrowser/></span> }</span>
                   </Tooltip>
                   {dateFormatter(game.release_date)}  </p>
              </div>
