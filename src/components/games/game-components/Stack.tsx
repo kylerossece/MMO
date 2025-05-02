@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useGameContext } from "../../../helpers/gameContext";
-import GameInformation from "./GameInformation";
+import Information from "./Information";
 import type { gameType } from "../../../types/gameTypes";
 import Stack from "@mui/material/Stack";
 
@@ -11,7 +11,7 @@ const GamesList = () => {
   const allGames = filteredList && filteredList.length > 0 ? filteredList : gameList;
 
   const [visibleCount, setVisibleCount] = useState(listedGames);
-  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const loadRef = useRef<HTMLDivElement | null>(null);
 
   const visibleGames = allGames?.slice(0, visibleCount);
 
@@ -30,7 +30,7 @@ const GamesList = () => {
       }
     );
 
-    const current = loadMoreRef.current;
+    const current = loadRef.current;
     if (current) observer.observe(current);
 
     return () => {
@@ -41,10 +41,10 @@ const GamesList = () => {
   return (
     <Stack spacing={0}>
       {visibleGames?.map((game: gameType) => (
-        <GameInformation game={game} key={game.id} />
+        <Information game={game} key={game.id} />
       ))}
       {visibleCount < allGames?.length && (
-        <div ref={loadMoreRef} style={{ height: "50px" }}></div>
+        <div ref={loadRef} style={{ height: "50px" }}></div>
       )}
     </Stack>
   );

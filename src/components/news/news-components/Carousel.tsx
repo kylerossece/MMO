@@ -5,12 +5,19 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Paper} from '@mui/material'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { setNews } from '../../../store/modules/news'
 import { useGameContext } from "../../../helpers/gameContext";
 import type {News} from "../../../types/gameTypes";
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from "../../../store/store";
 
-const GameNews = () => {
+const NewsCarousel = () => {
+
+  const dispatch = useDispatch()
+  const news = useSelector((state: RootState) => state.news.news)
+
     const {setNewsId} = useGameContext();
-    const {news, setNews} = useGameContext();
+
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -19,7 +26,7 @@ const GameNews = () => {
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 1,
+          items: 2,
           slidesToSlide: 2 
         },
         mobile: {
@@ -31,14 +38,15 @@ const GameNews = () => {
 
       const handleGameClick = (newsId: number | undefined) => {
         setNewsId(newsId)
-        console.log(news,newsId)
         window.open("/news/" + newsId, "_blank")
       }
     useEffect(() => {
         getGames(null, true).then((data) => {
-            setNews(data)
+    
+          dispatch(setNews(data))
+          console.log("data",news)
         })
-    }, [])
+    }, [dispatch])
     return(
         <Carousel
         draggable={false}
@@ -72,4 +80,4 @@ const GameNews = () => {
     )
 }
 
-export default GameNews
+export default NewsCarousel

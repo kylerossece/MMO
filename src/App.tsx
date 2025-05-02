@@ -2,11 +2,12 @@
 import './App.css'
 import { Route, Routes } from "react-router-dom";
 import Games from "./components/games/Games"
-import GameDetails from './components/games/components/GameDetails';
+import Details from './components/games/game-components/Details';
 import { useState } from 'react';
 import { GameContext } from './helpers/gameContext'
-import GameArticle from './components/games/components/GameArticle';
-import type {gameType, News} from "./types/gameTypes"
+import Article from './components/news/news-components/Article';
+import type {gameType} from "./types/gameTypes"
+import News from './components/news/News';
 
 function App() {
   const [gameList,setGameList] = useState<gameType[] | null>(null)
@@ -15,7 +16,7 @@ function App() {
   const [gameId, setGameId] = useState<number | null>(null)
   const [newsId, setNewsId] = useState<number | null>(null)
   const [genre, setGenre] = useState<string[] | null>([])
-  const [news, setNews] = useState<News[] | null>([])
+
 
  
 
@@ -32,12 +33,12 @@ function App() {
       setGameId, 
       newsId, 
       setNewsId, 
-      news, 
-      setNews }}>
+       }}>
     <Routes>
     <Route path="/" element={<Games />} />
-    <Route path="/game/:gameId" element={<GameDetails />} />
-    <Route path="/news/:newsId" element={<GameArticle />} />
+    <Route path="/news" element={<News />} />
+    <Route path="/game/:gameId" element={<Details />} />
+    <Route path="/news/:newsId" element={<Article />} />
   </Routes>
   </GameContext.Provider>
   )
