@@ -35,10 +35,10 @@ function App() {
       setNewsId, 
        }}>
     <Routes>
-    <Route path="/" element={<Games />} />
-    <Route path="/news" element={<News />} />
-    <Route path="/game/:gameId" element={<Details />} />
-    <Route path="/news/:newsId" element={<Article />} />
+    <Route path="/mmo-daily/" element={<Games />} />
+    <Route path="/mmo-daily/news" element={<News />} />
+    <Route path="/mmo-daily/game/:gameId" element={<Details />} />
+    <Route path="/mmo-daily/news/:newsId" element={<Article />} />
   </Routes>
   </GameContext.Provider>
   )
