@@ -8,7 +8,7 @@ import { GameContext } from './helpers/gameContext'
 import Article from './components/news/news-components/Article';
 import type {gameType} from "./types/gameTypes"
 import News from './components/news/News';
-
+import Error from './components/Error';
 function App() {
   const [gameList,setGameList] = useState<gameType[] | null>(null)
   const [filteredList, setFilteredList]  = useState<gameType[] | null>(null)
@@ -40,6 +40,7 @@ function App() {
     <Route path="/news" element={<News />} />
     <Route path="/game/:gameId" element={<Details />} />
     <Route path="/news/:newsId" element={<Article />} />
+    <Route path="*" element={<Error />} />
   </Routes>
   </GameContext.Provider>
 
